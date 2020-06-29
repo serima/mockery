@@ -199,7 +199,7 @@ class MockConfiguration
         foreach ($this->getAllMethods() as $method) {
             if ("__call" === $method->getName()) {
                 $params = $method->getParameters();
-                return !$params[1]->isArray();
+                return !Reflector::isArray($params[1]);
             }
         }
 
@@ -215,7 +215,7 @@ class MockConfiguration
         foreach ($this->getAllMethods() as $method) {
             if ("__callStatic" === $method->getName()) {
                 $params = $method->getParameters();
-                return !$params[1]->isArray();
+                return !Reflector::isArray($params[1]);
             }
         }
 
